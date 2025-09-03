@@ -1,0 +1,36 @@
+.galery__item{
+    height: 100px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: #F564A9;
+}
+
+.grade__galery{
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border: 2px solid #F564A9;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba (0, 0, 0, 0.1);
+}
+.grade__movel{
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.galery__item{
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #F564A9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

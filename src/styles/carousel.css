@@ -1,0 +1,50 @@
+/*
+  Animação para o carrossel infinito.
+  Move o container da direita para a esquerda.
+*/
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  /*
+    O segredo para o loop infinito sem espaços em branco está aqui.
+    O JavaScript duplicou o conteúdo, então o container '.slide' tem 200% da largura
+    do conteúdo original.
+    Ao movermos ele para a esquerda em -50% de sua largura total, estamos movendo
+    exatamente a largura do conteúdo original. Quando a animação termina,
+    o primeiro item duplicado está exatamente na posição onde o primeiro item
+    original começou. A animação reinicia para 0% sem nenhum salto visível.
+  */
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/*
+  Container pai que atua como a "janela" do carrossel.
+  Ele esconde o conteúdo que transborda para fora de sua área.
+*/
+.slider-container {
+  overflow: hidden;
+  /* Impede que o usuário selecione o texto dos cards enquanto eles se movem */
+  user-select: none;
+  /* Adiciona um efeito de fade nas laterais para um acabamento mais suave */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+/*
+  O container que segura TODOS os cards (originais + duplicados).
+  Este é o elemento que será animado.
+*/
+.slide {
+  /* Garante que o container se expanda para conter todos os filhos em uma linha */
+  display: inline-flex;
+  /* Aplica a animação: nome, duração, tipo de tempo (linear para velocidade constante), repetição (infinita) */
+  animation: scroll 40s linear infinite;
+}
+
+/* Pausa a animação quando o mouse está sobre o carrossel */
+.slider-container:hover .slide {
+  animation-play-state: paused;
+}

@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.faq{
+    margin-bottom: 200px;
+}
+.title{
+    font-size: 50px;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0px;
+     font-family: "Roboto", sans-serif;
+     color: #F564A9;
+}
+.subtitle__faq{
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    
+     font-family: "Roboto", sans-serif;
+     max-width: 60%;
+     margin:  auto;
+     margin-top: 20px;
+    margin-bottom: 40px;
+    color: #72727a;
+}
+
+
+.questions-container{
+    max-width: 800px;
+    margin: 0 auto;
+     font-family: "Roboto", sans-serif;
+    border: solid 1px #cfcfcf;
+    border-radius: 15px;
+
+    box-shadow: 0 0 0 8px #f4f4f5;
+}
+
+.question{
+    position: relative;
+    padding: 0 15px 0 30px;
+}
+.question:not(:last-child){
+    /* A borda foi substituída por um pseudo-elemento para controlar a largura */
+}
+.question:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    right: 15px;
+    height: 0.5px;
+    background-color: #e2e8f0;
+}
+.question button{
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border:none;
+    outline: none;
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+}
+.question p{
+    font-size: 22px;
+    max-height: 0;
+    opacity: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: all 0.6s ease;
+    color: #72727a;
+}
+.d-arrow{
+    transition: transform 0.5s ease-in ;
+    color: #72727a;
+}
+
+/*add this class when click*/
+.question p.show{
+    max-height: 200px; 
+    opacity: 1;
+    padding: 0 0 30px 0;
+}
+.question button .d-arrow.rotate{
+    transform: rotate(180deg);
+}

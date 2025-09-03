@@ -1,0 +1,131 @@
+/* Container que esconde o que estiver fora da área visível */
+.depoimentos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%; /* Ou a largura que você desejar */
+    overflow: hidden; /* ESSENCIAL para esconder a duplicação */
+    
+     /* A mágica do fading nas bordas */
+    mask-image: linear-gradient(
+        to right,
+        transparent, /* Começa transparente na borda esquerda */
+        black 10%,    /* Fica opaco a 10% do início */
+        black 90%,    /* Permanece opaco até 90% do fim */
+        transparent   /* Fica transparente na borda direita */
+    );
+    /* Adicione prefixes para maior compatibilidade com navegadores */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+}
+
+.depoimentos__title{
+     font-size: 50px;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0px;
+     font-family: "Roboto", sans-serif;
+     color: #F564A9;
+}
+
+.depoimentos__subtitle{
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    
+     font-family: "Roboto", sans-serif;
+     max-width: 60%;
+     margin:  auto;
+     margin-top: 20px;
+    margin-bottom: 40px;
+    color: #72727a;
+    margin-bottom: 50px;
+}
+
+
+/* O slide que contém todos os cards */
+.slide {
+    display: flex;
+    align-items: center;
+    /* Use 'gap' para gerenciar o espaçamento entre os cards */
+    gap: 30px; /* Este é o espaçamento entre os cards */
+    width: fit-content;
+    animation: slide 15s linear infinite; /* 'linear' para movimento constante */
+    align-items: stretch
+}
+
+.slide:hover {
+    animation-play-state: paused;
+}
+
+/* A animação que move o slide */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* A mágica: move o slide exatamente para o ponto de início da segunda cópia */
+        transform: translateX(-15%);
+    }
+}
+
+.depoimentos__card {
+    display: flex;
+    flex-direction: column;
+    background: #f4f4f5;
+    border: solid 1px #cfcfcf;
+    border-radius: 15px;
+    font-family: "Roboto", sans-serif;
+    /* Defina uma largura mínima para o card */
+    min-width:900px; /* Ajuste se necessário para o seu layout */
+     /* height: 300px; */
+    padding: 60px;
+    /* Remova a margem que estava causando o problema */
+    margin: 0;
+    justify-content: space-between;
+}
+
+/* O resto do seu CSS pode continuar como está */
+.depoimentos__text {
+  font-size: 24px;
+  color: #72727a;
+}
+
+.bi-quote{
+
+font-size: 50px;
+color: #F564A9;
+
+}
+
+
+.person{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    
+}
+
+.nome__person{
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+
+.perfil__person{
+    color: #F564A9;
+}
+
+.person img{
+    height: 80px;
+}

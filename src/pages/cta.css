@@ -1,0 +1,31 @@
+.cta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.container__cta{
+    align-items: center;
+    background: #F564A9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 500PX;
+    width: 100%;
+
+}
+
+.container__cta h2{
+    color: white;
+    font-size: 3rem;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 60%;
+
+}

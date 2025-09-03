@@ -1,0 +1,17 @@
+@import '/src/pages/cta.css';
+@import '/src/components/button.css';
+@import '/src/pages/perguntas-frequentes.css';
+@import '/src/pages/depoimentos.css';
+@import '/src/pages/servicos.css';
+@import '/src/pages/cursos.css';
+@import '/src/pages/banenr.css';
+@import'/src/pages/grade.css';
+
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}

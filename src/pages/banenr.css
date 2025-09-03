@@ -1,0 +1,89 @@
+.banner{
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    position: relative; /* Necessário para posicionar o pseudo-elemento ::after */
+}
+
+/* Este pseudo-elemento cria a sobreposição de gradiente na parte inferior do banner */
+.banner::after {
+    content: ''; /* Pseudo-elementos precisam da propriedade content */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Altura da transição. Ajuste conforme necessário. */
+    /* O gradiente vai do branco (para combinar com o fundo do banner) para transparente */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+}
+
+.banner__container{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ .banner__text{
+    width: 50%;
+    gap: 22px;
+    display: flex;
+
+    flex-direction: column
+ }
+
+ .banner__title{
+    font-size: 72px;
+    font-weight: 900;
+    color: #F564A9;
+ }
+ .banner__subtitle{
+    font-size: 44px;
+    font-weight: 700;
+ }
+
+ .banenr__cta {
+    display: flex;
+    gap: 20px;
+ }
+
+ .banenr__cta button{
+    background: #F564A9;
+   
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+     width: 200px;
+    height: auto;
+    padding: 10px;
+    border-radius: 8px;
+    
+ }
+
+ .banenr__cta button:hover{
+    background: rgb(255, 255, 255);
+    color: black;
+    cursor: pointer;
+    border: 1px solid #F564A9;
+    color: #F564A9;
+}
+
+.banner__image {
+    width: 50%; /* Ocupa a outra metade do container */
+    min-height: 600px; /* Define uma altura mínima para a div ser visível */
+    background-image: url('../images/banner.png'); /* Corrigido: extensão .png e caminho relativo */
+    background-size: cover; /* Faz a imagem cobrir toda a área da div */
+    background-position: right; /* Alinha a imagem à direita do container */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    position: relative;
+    right: -80px;
+   
+}
