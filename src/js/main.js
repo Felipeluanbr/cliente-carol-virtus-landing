@@ -25,71 +25,18 @@ if (slider) {
   });
 }
 
-// Animação da grade de imagens com rolagem infinita
-const gradeMovel = document.querySelector('.grade__movel');
+// --- Lógica para os sliders da grade de imagens ---
+// Seleciona todos os 'tracks' dos sliders da grade
+const gradeTracks = document.querySelectorAll(".grade__track");
 
-// Verifica se o elemento existe na página para evitar erros
-if (gradeMovel) {
-  const container = gradeMovel.parentElement; // O elemento que tem o overflow: hidden
+// Itera sobre cada track para duplicar seu conteúdo
+gradeTracks.forEach((track) => {
+  // Pega todos os filhos (as imagens) e transforma em um array
+  const trackContent = Array.from(track.children);
 
-  // --- 1. Garantir que há conteúdo suficiente ---
-  // Clonamos as imagens originais até que a altura total da grade
-  // seja pelo menos o dobro da altura do contêiner visível.
-  // Isso resolve o problema do "espaçamento grande".
-  const itemsOriginais = Array.from(gradeMovel.children);
-  const containerHeight = container.offsetHeight;
-
-  if (itemsOriginais.length > 0) {
-    while (gradeMovel.offsetHeight < containerHeight * 2) {
-      itemsOriginais.forEach(item => {
-        gradeMovel.appendChild(item.cloneNode(true));
-      });
-    }
-  }
-
-  // --- 2. Lógica de Animação Suave (sem saltos) ---
-  let posicaoScroll = 0;
-  const velocidade = 0.5; // Ajuste para controlar a velocidade (valores menores = mais lento)
-  let animacaoAtiva = true; // Usado para pausar a animação
-
-  // Função que anima a grade
-  function animarGrade() {
-    // Só executa a lógica se a animação estiver ativa
-    if (animacaoAtiva) {
-      posicaoScroll += velocidade;
-
-      const primeiroItem = gradeMovel.firstElementChild;
-      
-      // Calcula a altura real de um item da grade, incluindo o espaçamento (gap)
-      const estiloGrade = window.getComputedStyle(gradeMovel);
-      const gap = parseFloat(estiloGrade.gap) || 0;
-      const alturaItem = primeiroItem.offsetHeight + gap;
-
-      // Quando o primeiro item já rolou completamente para fora da tela...
-      if (posicaoScroll >= alturaItem) {
-        // ...nós o movemos para o final da lista.
-        gradeMovel.appendChild(primeiroItem);
-        // ...e ajustamos a posição do scroll para que a mudança seja imperceptível.
-        posicaoScroll -= alturaItem;
-      }
-
-      // Aplica a transformação para mover a grade para CIMA.
-      gradeMovel.style.transform = `translateY(-${posicaoScroll}px)`;
-    }
-
-    // Pede ao navegador para chamar a função `animarGrade` novamente
-    // na próxima atualização de tela, criando um loop de animação otimizado.
-    requestAnimationFrame(animarGrade);
-  }
-
-  // Bônus: Pausa a animação quando o mouse está sobre a galeria
-  container.addEventListener('mouseenter', () => {
-    animacaoAtiva = false;
+  // Duplica cada imagem e adiciona ao final do track para o loop infinito
+  trackContent.forEach((item) => {
+    const duplicatedItem = item.cloneNode(true);
+    track.appendChild(duplicatedItem);
   });
-  container.addEventListener('mouseleave', () => {
-    animacaoAtiva = true;
-  });
-
-  // Inicia a animação
-  requestAnimationFrame(animarGrade);
-}
+});

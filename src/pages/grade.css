@@ -1,72 +1,108 @@
-.grade{
-    width: 100%;
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #F564A9;
-      overflow: hidden;
-}
-.grade__container{
-    width: 100%;
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px;
-    margin-bottom: 80px;
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Move para a esquerda pela metade da largura total (conteúdo original) */
+    transform: translateX(-50%);
+  }
 }
 
-.grade__galery{
-    width: 580px;
-    height: 500px;
-    overflow: hidden;
-    border: 2px solid #F564A9;
-    border-radius: 22px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    /* left: 10%; */
-
+@keyframes scroll-right {
+  from {
+    /* Começa da posição final da animação para a esquerda */
+    transform: translateX(-50%);
+  }
+  to {
+    /* Move de volta para a posição inicial */
+    transform: translateX(0);
+  }
 }
 
-/* Adiciona um gradiente na parte inferior da galeria para um efeito de fade-in suave */
-.grade__galery::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 150px; /* Altura do gradiente, ajuste conforme necessário */
-    background: linear-gradient(to top, #F564A9, rgba(245, 100, 169, 0));
-    z-index: 2; /* Garante que o gradiente fique sobre as imagens */
-    pointer-events: none; /* Permite que o hover na galeria continue funcionando */
-}
-.grade__movel{
-    display: grid;
-    grid-template-columns: repeat(2, 220px);
-    justify-content: center;
-    gap: 40px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    box-sizing: border-box;
-}
-
-.galery__item{
-    height: 180px;
-    width: 220px;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas */
+.grade {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f564a9;
+  overflow: hidden; /* Esconde o que sai da tela */
+  gap: 20px; /* Espaço entre as linhas de sliders */
+  padding: 20px 0; /* Espaçamento vertical */
+  box-sizing: border-box;
+  /* Efeito de fade no topo e na base para um acabamento suave */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom, transparent, black 10%, black 90%, transparent
+  );
 }
 
-.galery__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz a imagem preencher o item sem distorcer */
-    display: block;
+/* O container de cada linha do slider (a "janela") */
+.grade__slider {
+  width: 100%;
+  overflow: hidden;
+  /* Efeito de fade nas laterais para um acabamento suave */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
+
+/* O container que segura e anima todas as imagens de uma linha */
+.grade__track {
+  display: flex; /* Alinha as imagens em uma linha */
+  width: fit-content; /* A largura se ajusta ao conteúdo */
+  gap: 20px; /* Espaçamento entre as imagens */
+  animation-duration: 60s; /* Duração da animação, ajuste conforme desejar */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Pausa a animação no hover */
+.grade:hover .grade__track {
+  animation-play-state: paused;
+}
+
+/* Aplica a animação correta com base na direção */
+.grade__slider[data-direction="left"] .grade__track {
+  animation-name: scroll-left;
+}
+
+.grade__slider[data-direction="right"] .grade__track {
+  animation-name: scroll-right;
+}
+
+/* Estilo para cada item (imagem) na grade */
+.grade__item {
+  height: 180px;
+  width: 220px;
+  flex-shrink: 0; /* Impede que os itens encolham */
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas */
+}
+
+.grade__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a imagem preencher o item sem distorcer */
+  display: block;
 }

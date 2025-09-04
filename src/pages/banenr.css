@@ -6,6 +6,7 @@
     justify-content: center;
     font-family: "Roboto", sans-serif;
     position: relative; /* Necessário para posicionar o pseudo-elemento ::after */
+    margin-bottom: 90px;
 }
 
 /* Este pseudo-elemento cria a sobreposição de gradiente na parte inferior do banner */
