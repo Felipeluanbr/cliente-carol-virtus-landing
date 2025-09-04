@@ -12,23 +12,10 @@
     width: 100%;
     font-family: "Roboto", sans-serif;
     display: flex;
-   justify-content: center;
+    justify-content: center;
     align-items: center;
-    margin-top: 80px;.grade__movel{
-        display: grid;
-        grid-template-columns: repeat(2, 220px);
-        justify-content: center;
-        gap: 40px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px 0;
-        box-sizing: border-box;
-    }
-    
+    margin-top: 80px;
     margin-bottom: 80px;
-  
 }
 
 .grade__galery{
@@ -41,6 +28,19 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     /* left: 10%; */
 
+}
+
+/* Adiciona um gradiente na parte inferior da galeria para um efeito de fade-in suave */
+.grade__galery::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Altura do gradiente, ajuste conforme necessário */
+    background: linear-gradient(to top, #F564A9, rgba(245, 100, 169, 0));
+    z-index: 2; /* Garante que o gradiente fique sobre as imagens */
+    pointer-events: none; /* Permite que o hover na galeria continue funcionando */
 }
 .grade__movel{
     display: grid;
@@ -59,7 +59,7 @@
     height: 180px;
     width: 220px;
     border-radius: 8px;
-    background-color: #F564A9;
+    background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas */
 }
@@ -69,9 +69,4 @@
     height: 100%;
     object-fit: cover; /* Faz a imagem preencher o item sem distorcer */
     display: block;
-}
-
-.transicao__gradiente{
-    height: 50px;
-    background: linear-gradient(to top, #120107, rgba(255, 240, 245, 0));
 }
