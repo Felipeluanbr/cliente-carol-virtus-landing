@@ -93,3 +93,29 @@
 .question button .d-arrow.rotate{
     transform: rotate(180deg);
 }
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .questions-container {
+        max-width: 90%;
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .faq {
+        margin-bottom: 100px;
+    }
+    .title {
+        font-size: 36px;
+    }
+    .subtitle__faq {
+        max-width: 90%;
+        font-size: 18px;
+    }
+    .question button, .question p {
+        font-size: 16px;
+    }
+}

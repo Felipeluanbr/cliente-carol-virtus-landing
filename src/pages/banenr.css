@@ -88,3 +88,87 @@
     right: -80px;
    
 }
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .banner__container {
+        width: 90%;
+    }
+    .banner__title {
+        font-size: 56px;
+    }
+    .banner__subtitle {
+        font-size: 32px;
+    }
+    .banner__image {
+        right: -40px;
+        min-height: 500px;
+    }
+    .banenr__cta button {
+        font-size: 16px;
+        padding: 12px 25px;
+        width: auto;
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .banner {
+        height: auto;
+        padding: 20px 0;
+        background-image: none;
+    }
+    .banner__title, .banner__subtitle {
+        /* Reverte a cor do texto para o padrão, já que o fundo é claro novamente */
+        color: inherit;
+    }
+
+    .banner::after {
+        /* Oculta o gradiente em mobile, pois a imagem de fundo será removida */
+        /* display: block; */
+    }
+    .banner__container {
+        /* Inverte a ordem para a imagem (segundo item no HTML) aparecer no topo */
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .banner__text{
+      width: 100%;
+      text-align:left;
+      color: #F564A9;
+    }
+
+    .banner::after {
+    top: 90%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Altura da transição. Ajuste conforme necessário. */
+    /* O gradiente vai do branco (para combinar com o fundo do banner) para transparente */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+}
+
+
+    .banner__subtitle{
+         font-size: 22px;
+         color: #72727a;
+    }
+    .banner__image {
+        /* Oculta a imagem em telas pequenas para focar no texto */
+        /* display: block; */
+        width: 100%;
+        min-height: 300px;
+        right: 0;
+    }
+    .banenr__cta {
+        flex-direction: column;
+        width: 100%;
+    }
+    .banenr__cta button {
+        width: 100%;
+    }
+}

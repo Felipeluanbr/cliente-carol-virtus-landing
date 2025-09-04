@@ -29,3 +29,28 @@
     width: 60%;
 
 }
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .container__cta {
+        height: 400px;
+    }
+    .container__cta h2 {
+        font-size: 2.5rem;
+        width: 80%;
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .container__cta {
+        height: auto; /* Altura automática */
+        padding: 80px 20px; /* Adiciona padding vertical e horizontal */
+    }
+    .container__cta h2 {
+        font-size: 2rem;
+        width: 95%;
+    }
+}

@@ -72,8 +72,12 @@
         transform: translateX(0);
     }
     to {
-        /* A mágica: move o slide exatamente para o ponto de início da segunda cópia */
-        transform: translateX(-15%);
+        /* 
+          Move o slide para a esquerda em 50% de sua largura total.
+          Como o JS duplicou o conteúdo, isso move exatamente a largura do conteúdo original,
+          criando um loop infinito e contínuo.
+        */
+        transform: translateX(-50%);
     }
 }
 
@@ -85,12 +89,18 @@
     border-radius: 15px;
     font-family: "Roboto", sans-serif;
     /* Defina uma largura mínima para o card */
-    min-width:900px; /* Ajuste se necessário para o seu layout */
+    width: 800px; /* Usar width para consistência, será ajustado para mobile */
      /* height: 300px; */
     padding: 60px;
     /* Remova a margem que estava causando o problema */
     margin: 0;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.depoimentos__card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* O resto do seu CSS pode continuar como está */
@@ -128,4 +138,42 @@ color: #F564A9;
 
 .person img{
     height: 80px;
+}
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .depoimentos {
+        width: 90%;
+    }
+    .depoimentos__card {
+        width: 600px;
+        padding: 40px;
+    }
+    .depoimentos__text {
+        font-size: 20px;
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .depoimentos {
+        width: 100%;
+        /* Remove o fade lateral em telas pequenas para ganhar espaço */
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+    .depoimentos__subtitle {
+        max-width: 90%;
+    }
+    .depoimentos__card {
+        /* O card ocupa 90% da largura da tela */
+        width: 90vw;
+        min-width: 90vw;
+        padding: 30px;
+    }
+    .depoimentos__text {
+        font-size: 16px;
+    }
 }

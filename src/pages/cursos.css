@@ -69,6 +69,12 @@
     /* justify-content: space-between; Removido para usar flex-grow no conteúdo */
     border: solid 1px #cfcfcf;
     box-shadow: 0 0 0 8px #f4f4f5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curso__card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 8px #f4f4f5;
 }
 .curso__card__text hr{
   margin-top: 20px;
@@ -109,4 +115,35 @@
     cursor: pointer;
     border: 1px solid #F564A9;
     color: #F564A9;
+}
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .cursos__container {
+        width: 90%;
+        gap: 30px;
+    }
+    .curso__card {
+        /* Permite que mais de 2 cards fiquem na mesma linha se houver espaço */
+        flex-grow: 1;
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .cursos__subtitle {
+        max-width: 90%;
+    }
+    .cursos__container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .curso__card {
+        width: 90%;
+        min-width: unset; /* Remove o min-width */
+        min-height: unset; /* Remove o min-height */
+    }
 }

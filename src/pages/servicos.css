@@ -130,3 +130,51 @@
   padding: 0;
   transform: scaleX(-1);
 }
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .servicos {
+        width: 90%;
+    }
+    .servico__container {
+        /* Muda para uma coluna em tablets */
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .servico__card {
+        width: 100%; /* Ocupa toda a largura do container */
+        max-width: 530px; /* Mantém um limite para não ficar muito largo */
+        margin: 0 auto; /* Centraliza o card */
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .servivos__subtitle {
+        max-width: 90%;
+    }
+    .servico__card {
+        flex-direction: column;
+        min-height: auto;
+        padding: 0;
+    }
+    .servicos__text {
+        width: 100%;
+        padding: 20px;
+        margin-top: 0;
+        text-align: center;
+    }
+    .one, .two, .three, .four {
+        width: 100%;
+        height: 200px; /* Define uma altura fixa para a imagem */
+        background-position: center;
+        border-radius: 8px 8px 0 0; /* Arredonda apenas os cantos superiores */
+        transform: none; /* Remove o espelhamento em mobile */
+    }
+    .three {
+        /* A imagem .three estava invertida em ambos os eixos, resetamos */
+        transform: none;
+    }
+}

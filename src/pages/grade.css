@@ -31,6 +31,7 @@
   gap: 20px; /* Espaço entre as linhas de sliders */
   padding: 20px 0; /* Espaçamento vertical */
   box-sizing: border-box;
+  position: relative; /* Necessário para posicionar o texto sobreposto */
   /* Efeito de fade no topo e na base para um acabamento suave */
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -95,14 +96,90 @@
   width: 220px;
   flex-shrink: 0; /* Impede que os itens encolham */
   border-radius: 8px;
-  background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.grade__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Faz a imagem preencher o item sem distorcer */
-  display: block;
+/* Estilos para o texto sobreposto na galeria */
+.grade__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Garante que o texto fique acima das imagens */
+  color: #f564a9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente para legibilidade */
+  padding: 40px;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.grade__text h2 {
+  font-size: 50px;
+  font-weight: 800;
+  margin: 0;
+  color: #f564a9;
+}
+
+.grade__text p {
+  font-size: 22px;
+  font-weight: 500;
+  max-width: 80%;
+  margin: 0;
+}
+
+.grade__text button {
+  background: white;
+  color: #f564a9;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ---- RESPONSIVIDADE ---- */
+
+/* Tablets e Telas Menores (até 1024px) */
+@media (max-width: 1024px) {
+    .grade {
+        height: auto; /* Altura automática para se ajustar ao conteúdo */
+        padding: 40px 0;
+    }
+    .grade__text {
+        padding: 30px;
+        width: 80%;
+    }
+    .grade__text h2 {
+        font-size: 40px;
+    }
+    .grade__text p {
+        font-size: 18px;
+    }
+}
+
+/* Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .grade__item {
+        height: 120px;
+        width: 150px;
+    }
+    .grade__track {
+        animation-duration: 40s; /* Animação mais rápida para itens menores */
+        gap: 15px;
+    }
+
+    .grade__text{
+      display: none;
+    }
 }

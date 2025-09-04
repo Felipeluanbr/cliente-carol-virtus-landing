@@ -1,16 +1,26 @@
-const buttons = document.querySelectorAll("button");
+// --- Lógica para o Acordeão do FAQ ---
+// Seleciona apenas os botões dentro da seção de perguntas para evitar conflitos
+const faqButtons = document.querySelectorAll(".question button");
 
-buttons.forEach((button) => {
+faqButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const faq = button.nextElementSibling;
-    const icon = button.children[1];
+    // O 'p' com a resposta é o próximo elemento irmão do botão
+    const answer = button.nextElementSibling;
+    // O ícone está dentro do botão, usamos querySelector para ser mais robusto
+    const icon = button.querySelector("i");
 
-    faq.classList.toggle("show");
-    icon.classList.toggle("rotate");
+    // Adiciona/remove a classe 'show' para mostrar/esconder a resposta
+    if (answer) {
+      answer.classList.toggle("show");
+    }
+    // Adiciona/remove a classe 'rotate' para girar o ícone
+    if (icon) {
+      icon.classList.toggle("rotate");
+    }
   });
 });
 
-// Seleciona o elemento do carrossel
+// --- Lógica para o Carrossel de Depoimentos ---
 const slider = document.querySelector(".slide");
 
 // Verifica se o slider existe na página
